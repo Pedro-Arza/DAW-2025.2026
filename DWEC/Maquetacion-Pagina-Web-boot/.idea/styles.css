@@ -1,0 +1,165 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.storage-badge {
+    background-color: #10b981;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.product-image-container {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image-placeholder {
+    color: #ccc;
+    font-size: 100px;
+}
+
+.product-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.accessory-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.offer-badge {
+    color: #dc2626;
+    font-weight: bold;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+.btn-buy {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.btn-buy:hover {
+    background-color: #3367d6;
+    color: white;
+}
+
+.feature-item {
+    display: flex;
+    align-items: start;
+    gap: 12px;
+    margin-bottom: 1rem;
+}
+
+.feature-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.accessory-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 1rem;
+    height: 100%;
+}
+
+.accessory-image {
+    background-color: #f5f5f5;
+    height: 150px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.badge-offer {
+    background-color: #dc2626;
+    color: white;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+.badge-new {
+    background-color: #4285f4;
+    color: white;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+.contest-section {
+    background-color: #f0f4f8;
+    border-radius: 12px;
+    padding: 3rem;
+    margin-top: 3rem;
+}
+
+.logo {
+    height: 50px; /* Ajusta según tu necesidad */
+    width: auto;
+    margin-right: 20px;
+}
+
+.contest-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.btn-submit {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.btn-submit:hover {
+    background-color: #3367d6;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-size: 0.875rem;
+}
