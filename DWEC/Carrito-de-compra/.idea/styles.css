@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    background-color: #69dcc5;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #000000;
+}
+
+.header-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 15px 0;
+    font-weight: 600;
+    border-bottom: 2px solid #000000;
+    margin-bottom: 10px;
+}
+
+.product-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #000000;
+    align-items: center;
+}
+
+.product-info h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.product-ref {
+    font-size: 13px;
+    color: #666;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-btn {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #000000;
+    background: #02ffa6;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.quantity-btn:hover {
+    background: #00ffa6;
+    border-color: #999;
+}
+
+.quantity-display {
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+}
+
+.price {
+    font-size: 16px;
+    color: #333;
+}
+
+.total-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #000000;
+}
+
+.total-box {
+    background: #00ffbb;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 400px;
+    margin-left: auto;
+}
+
+.total-box h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.total-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 16px;
+}
+
+.total-final {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0 10px;
+    margin-top: 15px;
+    border-top: 2px solid #090909;
+    font-size: 20px;
+    font-weight: 700;
+}

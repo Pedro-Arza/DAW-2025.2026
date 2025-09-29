@@ -1,31 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Carrito agoodshop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>agoodshop - Carrito</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="container">
+    <h1>agoodshop</h1>
 
-<nav>
-<h1>agoodshop</h1>
-</nav>
+    <div id="cart-content">
+        <div class="header-row">
+            <div>Producto</div>
+            <div>Cantidad</div>
+            <div>Unidad</div>
+            <div>Total</div>
+        </div>
 
+        <div id="products-list">
+            <!-- iPhone 13 Pro -->
+            <div class="product-row">
+                <div class="product-info">
+                    <h3>iPhone 13 Pro</h3>
+                    <div class="product-ref">Ref: 0K3QOSOV4V</div>
+                </div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn">-</button>
+                    <div class="quantity-display">0</div>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <div class="price">938,99€</div>
+                <div class="price">0€</div>
+            </div>
 
+            <!-- Cargador -->
+            <div class="product-row">
+                <div class="product-info">
+                    <h3>Cargador</h3>
+                    <div class="product-ref">Ref: TGD5XORY1L</div>
+                </div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn">-</button>
+                    <div class="quantity-display">0</div>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <div class="price">49,99€</div>
+                <div class="price">0€</div>
+            </div>
 
-<div>
-    <h1>iFone 13 Pro</h1>
-    <h3> Ref:0K3QOSOV4V</h3>
+            <!-- Funda de piel -->
+            <div class="product-row">
+                <div class="product-info">
+                    <h3>Funda de piel</h3>
+                    <div class="product-ref">Ref: IOKW9BQ9F3</div>
+                </div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn">-</button>
+                    <div class="quantity-display">0</div>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <div class="price">79,99€</div>
+                <div class="price">0€</div>
+            </div>
+        </div>
+
+        <div class="total-section">
+            <div class="total-box">
+                <h2>Total</h2>
+                <div id="total-details">
+                </div>
+                <div class="total-final">
+                    <span>TOTAL</span>
+                    <span id="grand-total">0€</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-<div>
-    <h1>Cargador</h1>
-    <h3>Ref:TGD5XORY1L</h3>
-</div>
-
-<div>
-    <h1>Funda de piel</h1>
-    <h3>Ref:IOKW9BQF3</h3>
-</div>
-
+    <script src="./script.js" type="module"></script>
 </body>
 </html>
