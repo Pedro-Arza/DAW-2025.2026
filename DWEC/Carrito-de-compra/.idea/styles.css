@@ -1,45 +1,174 @@
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background: #f8f8f8;
-  padding: 20px;
+/* ====== RESET Y BASE ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#productos {
+body {
+  font-family: "Inter", Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #1a1a1a;
+  line-height: 1.5;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  padding: 40px;
+}
+
+/* ====== CONTENEDOR PRINCIPAL ====== */
+.contenedor {
+  width: 100%;
+  max-width: 1100px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 40px 50px;
+}
+
+/* ====== TITULOS ====== */
+h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 25px 0 15px;
+}
+
+/* ====== PRODUCTOS DISPONIBLES ====== */
+#productos {
+  display: flex;
   flex-wrap: wrap;
-  margin-top: 20px;
+  gap: 20px;
 }
 
 .producto {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 0 5px #ccc;
-  width: 180px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+  width: 160px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.producto:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
 }
 
 .producto h3 {
-  font-size: 1.1em;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
-input {
-  width: 50px;
-  text-align: center;
+.producto p {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10px;
 }
 
-#total {
-  margin-top: 30px;
-  font-size: 1.3em;
-  font-weight: bold;
-}
-button {
-  background-color: #28a745;
+.producto button {
+  background-color: #0071e3;
   color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 8px 15px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.producto button:hover {
+  background-color: #005bb5;
+}
+
+/* ====== CARRITO ====== */
+.carrito-grid {
+  display: grid;
+  grid-template-columns: 2fr 0.8fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.carrito-tabla {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+.item-carrito {
+  display: grid;
+  grid-template-columns: 1.6fr 0.6fr 0.6fr 0.6fr;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.item-carrito:last-child {
+  border-bottom: none;
+}
+
+.item-carrito h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.item-carrito p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* ====== BOTÓN ELIMINAR ====== */
+.eliminar {
+  background: none;
+  border: none;
+  color: #d00;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.eliminar:hover {
+  color: #a00;
+}
+
+/* ====== PANEL RESUMEN ====== */
+.resumen {
+  background-color: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 25px 20px;
+}
+
+.resumen h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.resumen-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 800px) {
+  .carrito-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resumen {
+    margin-top: 20px;
+  }
 }

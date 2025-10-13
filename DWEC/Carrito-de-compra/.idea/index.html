@@ -4,20 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carrito de la compra - agoodshop</title>
-<link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Carrito de la compra</h1>
+  <main class="contenedor">
+    <section class="productos">
+      <h1>Carrito de la compra</h1>
+      <h2>Productos disponibles</h2>
+      <div id="productos"></div>
+    </section>
 
-  <h2>Productos disponibles</h2>
-  <div id="productos"></div>
+    <section class="carrito-contenedor">
+      <h2>Carrito</h2>
+      <div class="carrito-grid">
+        <div id="carrito" class="carrito-tabla"></div>
 
-  <h2>Carrito</h2>
-  <div id="carrito"></div>
-
-  <div id="total">
-    <h2>Total: <span id="precioTotal">0.00 €</span></h2>
-  </div>
+        <aside class="resumen">
+          <h3>Total</h3>
+          <div class="resumen-total">
+            <span>TOTAL</span>
+            <span id="precioTotal">0.00 €</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
 
   <!-- Importamos el módulo principal -->
   <script type="module" src="app.js"></script>
