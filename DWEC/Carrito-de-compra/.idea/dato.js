@@ -1,5 +1,6 @@
 export const 
-    dato={
+//Datos de los productos disponibles    
+dato={
        
     currency: "€",
     products: [
