@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>RetroGames Store - Inicio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary-color: #00e1ff;
+            --secondary-color: #000000;
+            --accent-color: #9edca8;
+            --text-color: #ffffff;
+            --background-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .main-content h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .main-content p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .game-library {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .game-card {
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            width: 300px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(156, 39, 176, 0.4);
+        }
+
+        .game-card h3 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .game-card p {
+            font-size: 1rem;
+            flex-grow: 1; /* Para que el botón quede abajo */
+        }
+        
+        .play-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .play-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            text-align: center;
+            padding: 1rem;
+            margin-top: 3rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>RetroGames Store</h1>
+    </header>
+
+    <div class="main-content">
+        <h2>Bienvenido a nuestra Sala de Juegos</h2>
+        <p>Selecciona un clásico y empieza a jugar. ¡Que tengas la mejor puntuación!</p>
+
+        <div class="game-library">
+            <!-- Tarjeta para Pac-Man -->
+            <div class="game-card">
+                <h3>Pac-Man</h3>
+                <img src="https://i.blogs.es/1735fc/1pacmancleanl_by_camdencc-d5rter9/450_1000.gif" alt="snake" width="350" height="250">
+                <p>El legendario comecocos te espera. Recorre el laberinto, come todos los puntos y evita a los fantasmas.</p>
+                <a th:href="@{/game2}" class="play-button">Jugar a Pac-Man</a>
+            </div>
+
+            <!-- Tarjeta para Snake -->
+            <div class="game-card">
+                <h3>Snake Classic</h3>
+                <img src="https://i.pinimg.com/originals/71/21/b1/7121b1ac9f9013b8fa01bdb69175f02f.gif" alt="snake" width="350" height="250">
+                <p>Revive el clásico juego de la serpiente. Come la comida, crece y evita chocar contra las paredes.</p>
+                <a th:href="@{/game3}" class="play-button">Jugar a Snake</a>
+            </div>
+
+            <!-- Puedes añadir más juegos aquí en el futuro -->
+            <!-- 
+            <div class="game-card">
+                <h3>Nuevo Juego</h3>
+                <p>Descripción del nuevo juego que añadas.</p>
+                <a th:href="@{/game4}" class="play-button">Jugar Ahora</a>
+            </div>
+            -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 RetroGames Store. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
