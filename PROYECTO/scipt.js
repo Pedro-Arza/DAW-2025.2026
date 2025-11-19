@@ -63,3 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+// Convierte un consumo de 8l/100 km a mpg.
+  if d
