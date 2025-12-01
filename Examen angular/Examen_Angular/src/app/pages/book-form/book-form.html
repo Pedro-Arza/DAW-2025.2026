@@ -1,0 +1,70 @@
+<!-- Formulario para crear o editar un libro -->
+<div class="form-container">
+  <!-- Título dinámico: cambia según si estamos editando o creando -->
+  <!-- El operador ternario ? : funciona como un if-else en una línea -->
+  <h2>{{ isEditMode ? 'Editar Libro' : 'Añadir Nuevo Libro' }}</h2>
+  
+  <!-- Formulario -->
+  <!-- (ngSubmit) se ejecuta cuando se envía el formulario (al hacer clic en el botón submit) -->
+  <!-- #bookForm="ngForm" crea una referencia al formulario para poder validarlo -->
+  <form (ngSubmit)="onSubmit()" #bookForm="ngForm">
+    
+    <!-- Campo de Título -->
+    <div class="form-group">
+      <label for="title">Título</label>
+      <!-- [(ngModel)] conecta el input con la variable book.title -->
+      <!-- required hace que el campo sea obligatorio -->
+      <!-- name es necesario para que ngModel funcione en formularios -->
+      <input type="text" id="title" name="title" [(ngModel)]="book.title" required class="form-control">
+    </div>
+
+    <!-- Campo de Autor -->
+    <div class="form-group">
+      <label for="author">Autor</label>
+      <input type="text" id="author" name="author" [(ngModel)]="book.author" required class="form-control">
+    </div>
+
+    <!-- Campo de Año -->
+    <div class="form-group">
+      <label for="year">Año</label>
+      <!-- type="number" solo permite números -->
+      <input type="number" id="year" name="year" [(ngModel)]="book.year" required class="form-control">
+    </div>
+
+    <!-- Campo de URL de Imagen -->
+    <div class="form-group">
+      <label for="image">URL de la Imagen</label>
+      <input type="text" id="image" name="image" [(ngModel)]="book.image" required class="form-control">
+    </div>
+
+    <!-- Campo de Descripción (opcional) -->
+    <div class="form-group">
+      <label for="description">Descripción</label>
+      <!-- textarea permite texto de varias líneas -->
+      <!-- rows="4" define la altura inicial -->
+      <textarea id="description" name="description" [(ngModel)]="book.description" rows="4" class="form-control"></textarea>
+    </div>
+
+    <!-- Vista previa de la imagen -->
+    <!-- *ngIf="book.image" solo muestra esto si hay una URL en book.image -->
+    <div class="image-preview" *ngIf="book.image">
+      <p>Vista previa:</p>
+      <!-- onerror: si la imagen no carga, la oculta -->
+      <img [src]="book.image" alt="Vista previa" onerror="this.style.display='none'">
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="form-actions">
+      <!-- Botón Cancelar (vuelve a la lista) -->
+      <!-- type="button" evita que envíe el formulario -->
+      <button type="button" routerLink="/libros" class="btn-cancel">Cancelar</button>
+      
+      <!-- Botón Guardar/Crear -->
+      <!-- type="submit" hace que envíe el formulario -->
+      <!-- [disabled]="!bookForm.form.valid" desactiva el botón si el formulario no es válido -->
+      <button type="submit" [disabled]="!bookForm.form.valid" class="btn-submit">
+        {{ isEditMode ? 'Guardar Cambios' : 'Crear Libro' }}
+      </button>
+    </div>
+  </form>
+</div>

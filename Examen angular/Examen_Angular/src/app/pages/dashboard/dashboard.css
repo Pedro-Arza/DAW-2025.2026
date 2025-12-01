@@ -1,0 +1,49 @@
+/* Estilos personalizados del Dashboard */
+
+/* Ajustes para las cards de estadísticas */
+.card {
+  /* Transición suave al hacer hover */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efecto hover en las cards */
+.card:hover {
+  /* Elevar ligeramente la card */
+  transform: translateY(-5px);
+  
+  /* Sombra más pronunciada */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Espaciado para los títulos de las cards */
+.card-title {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Ajuste del tamaño de fuente para números grandes */
+h2 {
+  font-weight: bold;
+}
+
+/* Estilos para la tabla */
+.table {
+  margin-bottom: 0;
+}
+
+/* Hacer que las filas de la tabla sean más interactivas */
+.table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Responsive: ajustar padding en móviles */
+@media (max-width: 768px) {
+  .container-fluid {
+    padding: 0.5rem;
+  }
+  
+  h1.display-4 {
+    font-size: 2rem;
+  }
+}

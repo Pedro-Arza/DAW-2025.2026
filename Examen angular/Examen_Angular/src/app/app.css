@@ -1,0 +1,32 @@
+/* Estilos del contenedor principal de la aplicación */
+
+.app-container {
+  /* Flexbox para organizar los elementos en columna (uno debajo de otro) */
+  display: flex;
+  flex-direction: column;
+  
+  /* Altura mínima del 100% de la ventana del navegador */
+  /* Esto asegura que el footer siempre esté abajo aunque haya poco contenido */
+  min-height: 100vh;
+}
+
+.content {
+  /* flex: 1 hace que este elemento ocupe todo el espacio disponible */
+  /* Esto empuja el footer hacia abajo */
+  flex: 1;
+  
+  /* Espaciado interno */
+  padding: 2rem;
+  
+  /* Ancho máximo del contenido */
+  max-width: 1200px;
+  
+  /* Centrar horizontalmente */
+  margin: 0 auto;
+  
+  /* Ancho completo */
+  width: 100%;
+  
+  /* box-sizing incluye el padding en el ancho total */
+  box-sizing: border-box;
+}

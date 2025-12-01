@@ -1,0 +1,7 @@
+/* Estilos personalizados para el Navbar */
+/* La mayoría de estilos vienen de Bootstrap, aquí solo añadimos pequeños ajustes */
+
+/* Estilo para el logo/nombre de la marca */
+.navbar-brand {
+  font-weight: bold; /* Texto en negrita */
+}

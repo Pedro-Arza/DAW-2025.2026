@@ -1,0 +1,147 @@
+<!-- Página de Lista de Libros con Dashboard Integrado -->
+<div class="container-fluid">
+  
+  <!-- SECCIÓN DASHBOARD -->
+  <div class="dashboard-section">
+    <!-- Título del Dashboard -->
+    <div class="row mt-4 mb-3">
+      <div class="col-12">
+        <h2>Estadísticas de la Biblioteca</h2>
+      </div>
+    </div>
+
+    <!-- Tarjetas de estadísticas (Cards de Bootstrap) -->
+    <div class="row g-3 mb-4">
+      <!-- Card 1: Total de Libros -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card text-white bg-primary h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="card-title text-uppercase mb-0">Total Libros</h6>
+                <h2 class="mb-0">{{ totalBooks }}</h2>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Autores Únicos -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card text-white bg-success h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="card-title text-uppercase mb-0">Autores</h6>
+                <h2 class="mb-0">{{ authorsCount }}</h2>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Libro Más Antiguo -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card text-white bg-warning h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="card-title text-uppercase mb-0">Más Antiguo</h6>
+                <h2 class="mb-0">{{ oldestBook?.year || 'N/A' }}</h2>
+                <small class="d-block text-truncate" style="max-width: 150px;">{{ oldestBook?.title || '' }}</small>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Libro Más Reciente -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card text-white bg-info h-100">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="card-title text-uppercase mb-0">Más Reciente</h6>
+                <h2 class="mb-0">{{ newestBook?.year || 'N/A' }}</h2>
+                <small class="d-block text-truncate" style="max-width: 150px;">{{ newestBook?.title || '' }}</small>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN CATÁLOGO DE LIBROS -->
+  <div class="catalog-section">
+    <h2>Catálogo de los Libros</h2>
+    
+    <!-- Sección de filtros -->
+    <div class="filters">
+      <!-- Grupo de inputs de filtro -->
+      <div class="filter-group">
+        <!-- Input para filtrar por título -->
+        <!-- [(ngModel)] es "two-way binding": lo que escribes aquí se guarda en filterTitle -->
+        <!-- (input) ejecuta applyFilters() cada vez que escribes algo -->
+        <input type="text" placeholder="Buscar por Título..." [(ngModel)]="filterTitle" (input)="applyFilters()">
+        
+        <!-- Input para filtrar por autor -->
+        <input type="text" placeholder="Buscar por Autor..." [(ngModel)]="filterAuthor" (input)="applyFilters()">
+        
+        <!-- Input para filtrar por año -->
+        <input type="number" placeholder="Año..." [(ngModel)]="filterYear" (input)="applyFilters()">
+      </div>
+      
+      <!-- Botón para añadir un nuevo libro -->
+      <button routerLink="/libros/nuevo" class="add-btn">Añadir Nuevo Libro</button>
+    </div>
+
+    <!-- Grid de tarjetas de libros -->
+    <div class="book-grid">
+      <!-- *ngFor recorre el array filteredBooks y crea una tarjeta por cada libro -->
+      <!-- "let book of filteredBooks" significa: por cada elemento del array, llámalo 'book' -->
+      <div *ngFor="let book of filteredBooks" class="book-card">
+        <!-- Contenedor de la imagen -->
+        <div class="image-container">
+          <!-- [src]="book.image" pone la URL de la imagen del libro -->
+          <!-- [alt]="book.title" pone el título como texto alternativo -->
+          <!-- onerror: si la imagen no carga, muestra una imagen de placeholder -->
+          <img [src]="book.image" [alt]="book.title" onerror="this.src='https://via.placeholder.com/150'">
+        </div>
+        
+        <!-- Información del libro -->
+        <div class="book-info">
+          <!-- {{ book.title }} muestra el título del libro (interpolación) -->
+          <h3>{{ book.title }}</h3>
+          
+          <!-- Muestra el autor -->
+          <p class="author">por {{ book.author }}</p>
+          
+          <!-- Muestra el año -->
+          <p class="year">{{ book.year }}</p>
+          
+          <!-- Botones de acción -->
+          <div class="actions">
+            <!-- Botón "Ver más" que lleva a la página de edición -->
+            <!-- [routerLink]="['/libros', book.id]" crea la ruta /libros/1, /libros/2, etc. -->
+            <button [routerLink]="['/libros', book.id]" class="btn-view">Ver más</button>
+            
+            <!-- Botón "Eliminar" que llama a la función deleteBook -->
+            <!-- (click)="deleteBook(book.id)" ejecuta la función al hacer clic -->
+            <button (click)="deleteBook(book.id)" class="btn-delete">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mensaje cuando no hay resultados -->
+    <!-- *ngIf solo muestra este div si filteredBooks.length === 0 (array vacío) -->
+    <div *ngIf="filteredBooks.length === 0" class="no-results">
+      <p>No se encontraron libros que coincidan con los filtros establecidos.</p>
+    </div>
+  </div>
+</div>

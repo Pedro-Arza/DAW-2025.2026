@@ -1,0 +1,33 @@
+<!-- Navbar usando Bootstrap -->
+<!-- nav: etiqueta semántica para barras de navegación -->
+<!-- navbar, navbar-expand-lg, navbar-dark, bg-dark: clases de Bootstrap -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <!-- Logo/nombre de la aplicación que lleva al inicio -->
+    <a class="navbar-brand" routerLink="/">Biblioteca Pedro</a>
+    
+    <!-- Botón hamburguesa para móviles (se ve solo en pantallas pequeñas) -->
+    <!-- data-bs-toggle y data-bs-target son atributos de Bootstrap para el menú colapsable -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <!-- Menú de navegación (se colapsa en móviles) -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <!-- Enlace a la página de Inicio -->
+        <li class="nav-item">
+          <!-- routerLink: directiva de Angular para navegar sin recargar la página -->
+          <!-- routerLinkActive: añade la clase 'active' cuando estamos en esa página -->
+          <!-- [routerLinkActiveOptions]="{exact: true}": solo marca como activo si la URL es EXACTAMENTE '/' -->
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+        </li>
+        
+        <!-- Enlace a la página de Libros (con dashboard integrado) -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/libros" routerLinkActive="active">Libros</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,64 @@
+/* Estilos de la página de Inicio */
+
+.home-container {
+  /* Centrar todo el texto */
+  text-align: center;
+  
+  /* Espaciado interno generoso */
+  padding: 4rem 2rem;
+  
+  /* Color de fondo gris claro */
+  background-color: #f9f9f9;
+  
+  /* Bordes redondeados */
+  border-radius: 8px;
+  
+  /* Sombra suave para dar profundidad */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Estilo del título principal */
+h1 {
+  color: #2c3e50; /* Color oscuro */
+  margin-bottom: 1rem; /* Espacio debajo */
+}
+
+/* Estilo del párrafo de descripción */
+p {
+  color: #7f8c8d; /* Color gris */
+  font-size: 1.2rem; /* Tamaño de letra más grande */
+  margin-bottom: 2rem; /* Espacio debajo */
+}
+
+/* Estilo del botón */
+button {
+  /* Espaciado interno del botón */
+  padding: 12px 24px;
+  
+  /* Tamaño de letra */
+  font-size: 1.1rem;
+  
+  /* Color de fondo azul */
+  background-color: #3498db;
+  
+  /* Texto blanco */
+  color: white;
+  
+  /* Sin borde */
+  border: none;
+  
+  /* Bordes redondeados */
+  border-radius: 4px;
+  
+  /* Cursor de mano al pasar por encima */
+  cursor: pointer;
+  
+  /* Transición suave del color al hacer hover */
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Efecto hover del botón */
+button:hover {
+  background-color: #2980b9; /* Azul más oscuro */
+  transform: translateY(-2px);
+}

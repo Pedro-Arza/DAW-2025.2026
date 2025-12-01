@@ -1,0 +1,137 @@
+<!-- Dashboard con diseño de Bootstrap -->
+<div class="container-fluid">
+  <!-- Título del Dashboard -->
+  <div class="row mt-4 mb-4">
+    <div class="col-12">
+      <h1 class="display-4">Dashboard de la Biblioteca</h1>
+      <p class="lead">Panel de control y estadísticas</p>
+    </div>
+  </div>
+
+  <!-- Tarjetas de estadísticas (Cards de Bootstrap) -->
+  <div class="row g-4 mb-4">
+    <!-- Card 1: Total de Libros -->
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card text-white bg-primary h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="card-title text-uppercase mb-0">Total Libros</h6>
+              <h2 class="mb-0">{{ totalBooks }}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2: Autores Únicos -->
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card text-white bg-success h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="card-title text-uppercase mb-0">Autores</h6>
+              <h2 class="mb-0">{{ authorsCount }}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3: Libro Más Antiguo -->
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card text-white bg-warning h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="card-title text-uppercase mb-0">Más Antiguo</h6>
+              <h2 class="mb-0">{{ oldestBook?.year || 'N/A' }}</h2>
+              <small>{{ oldestBook?.title || '' }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4: Libro Más Reciente -->
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="card text-white bg-info h-100">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="card-title text-uppercase mb-0">Más Reciente</h6>
+              <h2 class="mb-0">{{ newestBook?.year || 'N/A' }}</h2>
+              <small>{{ newestBook?.title || '' }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección de Libros Recientes -->
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header bg-dark text-white">
+          <h5 class="mb-0"> Últimos Libros Añadidos</h5>
+        </div>
+        <div class="card-body">
+          <!-- Tabla de Bootstrap responsive -->
+          <div class="table-responsive">
+            <table class="table table-hover table-striped">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Título</th>
+                  <th>Autor</th>
+                  <th>Año</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- *ngFor recorre los últimos 5 libros -->
+                <tr *ngFor="let book of recentBooks">
+                  <td>{{ book.id }}</td>
+                  <td>{{ book.title }}</td>
+                  <td>{{ book.author }}</td>
+                  <td>{{ book.year }}</td>
+                  <td>
+                    <!-- Botón para ver detalles del libro -->
+                    <button [routerLink]="['/libros', book.id]" class="btn btn-sm btn-primary">
+                      Ver Detalles
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Mensaje si no hay libros -->
+          <div *ngIf="recentBooks.length === 0" class="text-center text-muted py-4">
+            <p>No hay libros en la biblioteca disponible.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botones de acción rápida -->
+  <div class="row mt-4 mb-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Acciones Rápidas</h5>
+          <div class="d-flex gap-3 justify-content-center flex-wrap mt-3">
+            <button routerLink="/libros/nuevo" class="btn btn-success btn-lg">
+               Añadir Nuevo Libro
+            </button>
+            <button routerLink="/libros" class="btn btn-primary btn-lg">
+              Ver Todos los Libros que hay actualmente.
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

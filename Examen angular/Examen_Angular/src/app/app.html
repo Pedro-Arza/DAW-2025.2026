@@ -1,0 +1,16 @@
+<!-- Este es el HTML principal de la aplicación -->
+<!-- Estructura: Navbar arriba, contenido en medio, Footer abajo -->
+<div class="app-container">
+  <!-- Componente de navegación (barra superior) -->
+  <app-navbar></app-navbar>
+  
+  <!-- Contenedor principal donde se carga el contenido de cada página -->
+  <main class="content">
+    <!-- router-outlet es como un "hueco" donde Angular pone el componente de la página actual -->
+    <!-- Dependiendo de la URL, aquí aparecerá Home, BookList o BookForm -->
+    <router-outlet></router-outlet>
+  </main>
+  
+  <!-- Componente de pie de página (abajo del todo) -->
+  <app-footer></app-footer>
+</div>
