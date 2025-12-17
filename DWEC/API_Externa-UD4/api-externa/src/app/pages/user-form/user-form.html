@@ -1,1 +1,47 @@
-<p>user-form works!</p>
+<div class="form-container">
+  <h2>{{ isEditMode ? 'Actualizar Usuario' : 'Nuevo Usuario' }}</h2>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="first_name">Nombre</label>
+      <input id="first_name" type="text" formControlName="first_name" class="form-control" />
+      @if (userForm.get('first_name')?.invalid && userForm.get('first_name')?.touched) {
+      <small class="error-text">El nombre es requerido.</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="last_name">Apellido</label>
+      <input id="last_name" type="text" formControlName="last_name" class="form-control" />
+      @if (userForm.get('last_name')?.invalid && userForm.get('last_name')?.touched) {
+      <small class="error-text">El apellido es requerido.</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="username">Usuario</label>
+      <input id="username" type="text" formControlName="username" class="form-control" />
+      @if (userForm.get('username')?.invalid && userForm.get('username')?.touched) {
+      <small class="error-text">El nombre de usuario es requerido.</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" class="form-control" />
+      @if (userForm.get('email')?.invalid && userForm.get('email')?.touched) {
+      <small class="error-text">Introduce un email válido.</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="image">Imagen URL</label>
+      <input id="image" type="text" formControlName="image" class="form-control" />
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="userForm.invalid" class="btn btn-save">Guardar</button>
+      <a routerLink="/" class="btn btn-cancel">Cancelar</a>
+    </div>
+  </form>
+</div>

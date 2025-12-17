@@ -1,0 +1,19 @@
+<div class="user-detail-container">
+  @if (usuario) {
+    <div class="user-card-large">
+      <img [src]="usuario.image" [alt]="usuario.first_name">
+      <h2>{{ usuario.first_name }} {{ usuario.last_name }}</h2>
+      <p class="username">@ {{ usuario.username }}</p>
+      <p class="email">{{ usuario.email }}</p>
+      <p class="id">ID: {{ usuario.id }} | _ID: {{ usuario._id }}</p>
+      
+      <a routerLink="/" class="btn-back">Volver a la lista</a>
+    </div>
+  } @else {
+    <div class="loading-state">
+        <p>Cargando usuario...</p>
+        <!-- Debug Helper -->
+        <small>Esperando datos...</small>
+    </div>
+  }
+</div>

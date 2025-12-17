@@ -6,7 +6,7 @@ import { UsuarioCard } from './components/usuario-card/usuario-card';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Footer, Navbar, UsuarioCard],
+  imports: [RouterOutlet, Footer, Navbar],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
