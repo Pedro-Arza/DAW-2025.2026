@@ -1,5 +1,5 @@
 export interface Iusuario {
-    _id: string;
+    _id: string | number;
     id: number;
     first_name: string;
     last_name: string;

@@ -82,7 +82,7 @@ export class UserForm implements OnInit {
             timer: 1500,
             showConfirmButton: false
           }).then(() => {
-             this.router.navigate(['/']);
+             this.router.navigate(['/users']);
           });
         }).catch(err => {
             console.error(err);
@@ -103,7 +103,7 @@ export class UserForm implements OnInit {
               timer: 1500,
               showConfirmButton: false
             }).then(() => {
-               this.router.navigate(['/']);
+               this.router.navigate(['/users']);
             });
         }).catch(err => {
             console.error(err);

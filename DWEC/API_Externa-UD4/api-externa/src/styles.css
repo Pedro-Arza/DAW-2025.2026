@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles & Theming */
+:root {
+  --bg-color: #f3f4f6;
+  --text-color: #1f2937;
+  --card-bg: #ffffff;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --navbar-bg: #ffffff;
+  --navbar-text: rgba(0,0,0,.55);
+  --navbar-active: #000000;
+  --input-bg: #ffffff;
+  --input-border: #d1d5db;
+  --input-text: #1f2937;
+  --heading-color: #333;
+  --muted-text: #6b7280;
+}
+
+[data-theme="dark"] {
+  --bg-color: #111827;
+  --text-color: #f9fafb;
+  --card-bg: #1f2937;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --navbar-bg: #1f2937;
+  --navbar-text: rgba(255,255,255,.55);
+  --navbar-active: #ffffff;
+  --input-bg: #374151;
+  --input-border: #4b5563;
+  --input-text: #f9fafb;
+  --heading-color: #f3f4f6;
+  --muted-text: #9ca3af;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  margin: 0;
+}

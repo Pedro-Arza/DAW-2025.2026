@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { lastValueFrom, Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Iusuario } from '../interfaces/iusuario';
 
 @Injectable({
@@ -14,15 +14,21 @@ export class UsuarioService {
   
   // Cache para simular persistencia (ya que la API es fake)
   private usuariosCache: any = null;
+  // Lista local para usuarios creados (que no se guardan en el servidor real)
+  private localUsers: Iusuario[] = [];
 
   constructor() {}
 //metodo para obtener todos los usuarios
-  getAllUsuarios(): Observable<any> {
-    if (this.usuariosCache) {
-      return of(this.usuariosCache);
-    }
-    return this.httpCliente.get<any>(this.baseUrl).pipe(
-      tap(data => this.usuariosCache = data)
+  getAllUsuarios(page: number = 1, perPage: number = 10): Observable<any> {
+    return this.httpCliente.get<any>(`${this.baseUrl}?page=${page}&per_page=${perPage}`).pipe(
+      map(data => {
+        if (page === 1) {
+          // Prepend local users to the first page results
+          data.results = [...this.localUsers, ...data.results];
+        }
+        this.usuariosCache = data;
+        return data;
+      })
     );
   }
 
@@ -31,7 +37,11 @@ export class UsuarioService {
   }
 
   getUsuariosById(_id: string | number): Promise<Iusuario> {
-    // Intentar buscar en cache primero si existe, para mayor velocidad y coherencia
+    // Buscar primero en localUsers
+    const localUser = this.localUsers.find((u: any) => u._id === _id || u.id == _id);
+    if (localUser) return Promise.resolve(localUser);
+
+    // Intentar buscar en cache primero si existe
     if (this.usuariosCache && this.usuariosCache.results) {
         const cachedUser = this.usuariosCache.results.find((u: any) => u._id === _id || u.id == _id);
         if (cachedUser) {
@@ -44,6 +54,9 @@ export class UsuarioService {
   deleteUsuarioById(_id: string | number): Promise<any> {
     return lastValueFrom(this.httpCliente.delete<any>(`${this.baseUrl}/${_id}`))
       .then(res => {
+          // Eliminar de localUsers si existe
+          this.localUsers = this.localUsers.filter((u: any) => u._id !== _id && u.id != _id);
+          
           if (this.usuariosCache && this.usuariosCache.results) {
               this.usuariosCache.results = this.usuariosCache.results.filter((u: any) => u._id !== _id && u.id != _id);
           }
@@ -55,11 +68,9 @@ export class UsuarioService {
   createUsuario(usuario: Iusuario): Promise<Iusuario> {
     return lastValueFrom(this.httpCliente.post<Iusuario>(`${this.baseUrl}`, usuario))
       .then(res => {
-          if (this.usuariosCache && this.usuariosCache.results) {
-              // Asignamos el ID que devuelve la API (si lo devuelve) o simulamos uno
-              const newUser = { ...usuario, ...res };
-              this.usuariosCache.results.push(newUser);
-          }
+          // Guardamos en localUsers con el ID simulado que venga (o uno generado si la API fake no devuelve uno unico)
+          const newUser = { ...usuario, ...res, _id: res._id || res.id || Date.now() }; 
+          this.localUsers.unshift(newUser); // Add to beginning of local list
           return res;
       });
   }

@@ -5,10 +5,10 @@
 }
 
 .user-card-large {
-  background: white;
+  background: var(--card-bg);
   padding: 40px;
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: var(--card-shadow);
   text-align: center;
   max-width: 500px;
   width: 100%;
@@ -23,7 +23,7 @@
 }
 
 h2 {
-  color: #1f2937;
+  color: var(--heading-color);
   margin-bottom: 5px;
 }
 
@@ -34,12 +34,12 @@ h2 {
 }
 
 .email {
-  color: #4b5563;
+  color: var(--text-color);
   margin-bottom: 10px;
 }
 
 .id {
-  color: #9ca3af;
+  color: var(--muted-text);
   font-size: 0.9em;
   margin-bottom: 30px;
 }
