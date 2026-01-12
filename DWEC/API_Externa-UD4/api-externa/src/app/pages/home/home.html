@@ -1,48 +1,124 @@
+<!-- Título principal de la página -->
 <h1>Lista de Usuarios</h1>
 
-@defer (on viewport) { @if (usuarios().length > 0) {
-<div class="user-grid">
-  @for (user of usuarios(); track user._id) {
-  <div class="user-card">
-    @let fullName = user.first_name + ' ' + user.last_name;
-    <img [src]="user.image" [alt]="fullName" />
-    <h3>{{ fullName }}</h3>
-    <p>{{ user.email }}</p>
+<!-- 
+  @defer: Carga diferida del contenido
+  (on viewport): Solo se renderiza cuando el usuario hace scroll hasta esta sección
+  Mejora el rendimiento inicial de la aplicación
+-->
+@defer (on viewport) { 
+  
+  <!-- Verifica si hay usuarios en el array usando signals -->
+  @if (usuarios().length > 0) {
 
-    <div class="action-buttons">
-      <button class="btn btn-info" (click)="verDetalles(user._id)">Detalles</button>
-      <button class="btn btn-warning" (click)="actualizarUsuario(user._id)">Actualizar</button>
-      <button class="btn btn-danger" (click)="borrarUsuario(user._id)">Borrar</button>
+    <!-- Contenedor grid para las tarjetas de usuario -->
+    <div class="user-grid">
+      
+      <!-- 
+        @for: Itera sobre cada usuario
+        track user._id: Identifica cada elemento para optimizar el renderizado del DOM
+      -->
+      @for (user of usuarios(); track user._id) {
+        
+        <div class="user-card">
+          
+          <!-- 
+            @let: Define una variable local en el template
+            Concatena nombre y apellido una sola vez para reutilizar
+          -->
+          @let fullName = user.first_name + ' ' + user.last_name;
+          
+          <!-- Imagen del usuario con binding de propiedades -->
+          <img [src]="user.image" [alt]="fullName" />
+          
+          <!-- Nombre completo del usuario -->
+          <h3>{{ fullName }}</h3>
+          
+          <!-- Email del usuario -->
+          <p>{{ user.email }}</p>
+
+          <!-- Botones de acción para cada usuario -->
+          <div class="action-buttons">
+            <!-- Botón para ver detalles - pasa el ID del usuario al método -->
+            <button class="btn btn-info" (click)="verDetalles(user._id)">Detalles</button>
+            
+            <!-- Botón para actualizar usuario -->
+            <button class="btn btn-warning" (click)="actualizarUsuario(user._id)">Actualizar</button>
+            
+            <!-- Botón para eliminar usuario -->
+            <button class="btn btn-danger" (click)="borrarUsuario(user._id)">Borrar</button>
+          </div>
+        </div>
+      }
     </div>
-  </div>
+
+    <!-- Componente de paginación con Bootstrap -->
+    <nav aria-label="Page navigation" class="mt-4">
+      <ul class="pagination justify-content-center">
+        
+        <!-- 
+          Botón "Anterior"
+          [class.disabled]: Se deshabilita cuando estamos en la página 1
+          page(): Signal que contiene la página actual
+        -->
+        <li class="page-item" [class.disabled]="page() === 1">
+          <button class="page-link" (click)="changePage(page() - 1)">Anterior</button>
+        </li>
+
+        <!-- 
+          Genera los botones numéricos de paginación
+          [].constructor(totalPages()): Truco para crear un array de N elementos
+          totalPages(): Signal con el número total de páginas
+          $index: Variable implícita del @for con el índice actual (empieza en 0)
+        -->
+        @for (p of [].constructor(totalPages()); track $index) {
+          
+          <!-- pageNum empieza en 1 porque $index empieza en 0 -->
+          @let pageNum = $index + 1;
+          
+          <!-- 
+            [class.active]: Resalta la página actual
+            Compara la página actual con el número de este botón
+          -->
+          <li class="page-item" [class.active]="page() === pageNum">
+            <button class="page-link" (click)="changePage(pageNum)">{{ pageNum }}</button>
+          </li>
+        }
+
+        <!-- 
+          Botón "Siguiente"
+          Se deshabilita cuando estamos en la última página
+        -->
+        <li class="page-item" [class.disabled]="page() === totalPages()">
+          <button class="page-link" (click)="changePage(page() + 1)">Siguiente</button>
+        </li>
+      </ul>
+    </nav>
+
+  } @else {
+    <!-- Se muestra cuando el array de usuarios está vacío -->
+    <p>No se encontraron usuarios.</p>
   }
-</div>
 
-<!-- Paginación -->
-<nav aria-label="Page navigation" class="mt-4">
-  <ul class="pagination justify-content-center">
-    <li class="page-item" [class.disabled]="page() === 1">
-      <button class="page-link" (click)="changePage(page() - 1)">Anterior</button>
-    </li>
+} @placeholder {
+  <!-- 
+    @placeholder: Se muestra antes de que inicie la carga
+    Aparece mientras el elemento no está en el viewport
+  -->
+  <p>Cargando componente de usuarios...</p>
 
-    @for (p of [].constructor(totalPages()); track $index) {
-    @let pageNum = $index + 1;
-    <li class="page-item" [class.active]="page() === pageNum">
-      <button class="page-link" (click)="changePage(pageNum)">{{ pageNum }}</button>
-    </li>
-    }
-
-    <li class="page-item" [class.disabled]="page() === totalPages()">
-      <button class="page-link" (click)="changePage(page() + 1)">Siguiente</button>
-    </li>
-  </ul>
-</nav>
-} @else {
-<p>No se encontraron usuarios.</p>
-} } @placeholder {
-<p>Cargando componente de usuarios...</p>
 } @loading (minimum 1s) {
-<p>Obteniendo datos...</p>
+  <!-- 
+    @loading: Se muestra durante la carga de datos
+    (minimum 1s): Se mantiene visible al menos 1 segundo
+    Evita parpadeos si la carga es muy rápida
+  -->
+  <p>Obteniendo datos...</p>
+
 } @error {
-<p>Error al cargar los usuarios</p>
+  <!-- 
+    @error: Se muestra si ocurre algún error durante la carga
+    Manejo de errores a nivel de template
+  -->
+  <p>Error al cargar los usuarios</p>
 }
